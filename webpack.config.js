@@ -12,7 +12,8 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/i,
+                test: /\.js$/,
+                exclude: /node_modules/,
                 use: [
                     {
                         loader: "babel-loader",
@@ -23,16 +24,13 @@ module.exports = {
                                     {
                                         "useBuiltIns": "usage",
                                         "corejs": 3,
-                                        "targets": {
-                                            "chrome": "58",
-                                            "ie": "10"
-                                        }
+                                        "targets": "last 1 version,> 1%,maintained node versions,not dead"
                                     },
                                 ]
-                            ],
-                            "plugins": [
-                                "@babel/plugin-transform-runtime", // 和 preset-env 不同时使用
                             ]
+                            // "plugins": [
+                            //     "@babel/plugin-transform-runtime", // 和 preset-env 不同时使用
+                            // ]
                         }
                     }
                 ]
